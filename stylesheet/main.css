@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-size: 1.1rem;
+    font-family: sans-serif
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: inherit
+}
+
+.link-index,
+.sub-link {
+    border: 1px solid #444444;
+    display: inline-block;
+    margin: .5rem
+}
+
+.link-index {
+    color: #444444;
+    padding: 1rem 1.3rem;
+    background-color: #fafafa
+}
+
+.link-index:hover {
+    color: #558edc;
+    background: #eeeeee
+}
+
+.sub-link {
+    color: #dddddd;
+    padding: .6rem 1rem;
+    background-color: #15a902
+}
+
+.sub-link:hover {
+    background: #bb0000;
+    color: #ffffff
+}
+
+.abrir {
+    margin-top: 2.7rem
+}
