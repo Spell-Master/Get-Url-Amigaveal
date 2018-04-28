@@ -23,7 +23,7 @@ $get = DataFilter::filterGet();
         <p>O Terceito link é home seria o mesmo que <b><?= DataFilter::baseURI(); ?>?a=pagina-c&b=esse_e_o_valor_do_get</b></p>
 
         <a href="pagina-d/pagina-e">Abrindo outro arquivo junto</a>
-        <p>O Terceito link é home seria o mesmo que <b><?= DataFilter::baseURI(); ?>?a=pagina-d&b=pagina-e</b></p>
+        <p>O Quarto link é home seria o mesmo que <b><?= DataFilter::baseURI(); ?>?a=pagina-d&b=pagina-e</b></p>
 
         <hr />
         <?php include (DataFilter::getPage(isset($get->a) ? $get->a : 'home')); ?>
