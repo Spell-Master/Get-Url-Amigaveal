@@ -1,34 +1,38 @@
-<?php require_once ('./function/define.php'); ?>
+<?php
+require ('./DataFilter.php');
+$get = DataFilter::filterGet();
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <base href="<?= $config->siteUrl; ?>">
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta name="author" content="Omar Pautz (Spell Master)"/>
-        <title><?= $config->site_name; ?> </title>
-
-        <link href="stylesheet/main.css<?= isset($config->fileCache) ? "/?={$config->rand}" : null; ?>" rel="stylesheet" type="text/css"/>
-        <script src="javascript/main.js<?= isset($config->fileCache) ? "/?={$config->rand}" : null; ?>" type="text/javascript"></script>
-
+        <base href="<?= DataFilter::baseURI(); ?>">
+        <meta name="autor" content="Omar Pautz (Spell Master)"/>
+        <meta charset="UTF-8">
+        <title>Url Amigavel</title>
     </head>
     <body>
-        <a class="link-index" href="<?= $config->siteUrl . "home"; ?>">/?module=home</a>
-        <a class="link-index" href="<?= $config->siteUrl . "teste1"; ?>">/?module=teste1</a>
-        <a class="link-index" href="<?= $config->siteUrl . "teste2"; ?>">/?module=teste2</a>
+        <h1>Exemplo de url's amigáveis</h1>
+        <hr />
+        <a href="home">Página simples</a>
+        <p>O primeiro link é home seria o mesmo que <b><?= DataFilter::baseURI(); ?>?a=home</b></p>
 
-        <br>
-        <a class="sub-link" href="<?= $config->siteUrl . "teste1/teste1-page1"; ?>">/?module=teste1&page=teste1-page1</a>
-        <a class="sub-link" href="<?= $config->siteUrl . "teste1/teste1-teste2"; ?>">/?module=teste1&page=teste1-teste2</a>
+        <a href="pagina-b">Outro arquivo</a>
+        <p>O segundo link é home seria o mesmo que <b><?= DataFilter::baseURI(); ?>?a=pagina-b</b></p>
 
-        <div class="abrir">
-            <?php
-            if (isset($get->module)) {
-                include_once ('pages' . DIRECTORY_SEPARATOR . $get->module . '.php');
-            } else {
-                include_once ('pages' . DIRECTORY_SEPARATOR . 'home.php');
-            }
-            ?>
-        </div>
+        <a href="pagina-c/esse_e_o_valor_do_get">Envio de parâmetro</a>
+        <p>O Terceito link é home seria o mesmo que <b><?= DataFilter::baseURI(); ?>?a=pagina-c&b=esse_e_o_valor_do_get</b></p>
+
+        <a href="pagina-d/pagina-e">Abrindo outro arquivo junto</a>
+        <p>O Terceito link é home seria o mesmo que <b><?= DataFilter::baseURI(); ?>?a=pagina-d&b=pagina-e</b></p>
+
+        <hr />
+        <?php include (DataFilter::getPage(isset($get->a) ? $get->a : 'home')); ?>
+        <hr />
+        <b>Depuração de valores</b>
+        <?php
+        echo ("<pre>");
+        var_dump($get);
+        echo ("</pre>");
+        ?>
     </body>
 </html>

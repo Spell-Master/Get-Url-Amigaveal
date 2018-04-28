@@ -1,3 +1,2 @@
+Página inicial home.php
 
-
-Arquivo home

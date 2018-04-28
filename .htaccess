@@ -1,7 +1,6 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^/]+)$ index.php?module=$1 [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^/]+)/([^/]+)$ index.php?module=$1&page=$2 [L]
+RewriteRule ^([a-z,0-9,A-Z,_-]+)\/?$ index.php?a=$1 [NC,L]
+RewriteRule ^([a-z,0-9,A-Z,_-]+)\/([a-z,0-9,A-Z,_-]+)\/?$ index.php?a=$1&b=$2 [NC,L]
+
